@@ -3,7 +3,18 @@ import { connection } from "../data/connection"
 
 export default async function getProducts(req: Request, res: Response): Promise<void> {
     try {
-        const result = await connection.select().table('labecommerce_products')
+        let { order, search } = req.query
+
+        if (!search) {
+            search = '%'
+        }
+
+        const result = await connection
+            .table('labecommerce_products')
+            .select()
+            .whereILike('name', `%${search}%`)
+            .orderBy('name', `${order}`)
+
         res.status(200).send(result)
     } catch (error: any) {
         console.log(error)
