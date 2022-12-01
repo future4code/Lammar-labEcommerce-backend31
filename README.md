@@ -16,3 +16,8 @@ Dependências utilizadas:
 * Typescript
 * dotenv
 * mySQL
+
+
+---
+
+💻 **Desenvolvedor:** Rafael Castro
